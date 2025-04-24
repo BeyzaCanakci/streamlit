@@ -20,5 +20,5 @@ You can select pages from the menu on the left.
 """)
 from PIL import Image
 
-#image = Image.open("/Users/beyzacanakci/Desktop/miuul/proje/proje.webp")  # webp formatı destekleniyor
-#st.image(image, use_container_width=True)
+image = Image.open("/streamlit/images/proje.webp")  # webp formatı destekleniyor
+st.image(image, use_container_width=True)
