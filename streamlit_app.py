@@ -7,14 +7,14 @@ st.set_page_config(
     layout="wide"
 )
 
-st.title("Metagenomik Analiz Platformu")
+st.title("Metagenomic Data Analysis Platform")
 st.markdown("""
 Bu platformda:
-- 🧠 **Makine öğrenmesi ile hastalık tahmini** yapabilirsiniz
-- 🧬 **Mikrobiyal çeşitlilik ve bolluk analizlerini** görselleştirebilirsiniz.
-- 📊 **Keşifçi veri analizi adımlarını** gerçekleştirebilirsiniz.
+- 🧠 **You can predict the disease with machine learning**
+- 🧬 **You can visualize microbial diversity and abundance analysis**
+- 📊 **Discovery data analysis steps**
 
-Soldaki menüden sayfaları seçebilirsiniz.
+You can select pages from the menu on the left.
 """)
 from PIL import Image
 
