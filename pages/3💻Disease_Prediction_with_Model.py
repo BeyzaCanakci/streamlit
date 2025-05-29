@@ -24,7 +24,7 @@ Kişilerin örneklerindeki mikroorganizmaların bolluk düzeylerine dayanarak, m
 # Cache'li model yükleme
 @st.cache_resource
 def load_model():
-    return joblib.load("/Users/beyzacanakci/Desktop/miuul/proje/RF-Metagenomic-data-analysis.pkl")
+    return joblib.load("model/RF-Metagenomic-data-analysis.pkl")
 
 model = load_model()
 
