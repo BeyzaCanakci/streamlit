@@ -9,7 +9,7 @@ from scipy.stats import mstats
 
 def analyze_microbiome_disease(X_num, y_dis, disease, control_label="healthy", top_n=5):
     """
-    Belirli bir hastalık için anlamlı mikroorganizmaları analiz eder ve görselleştirir.
+    It analyzes and visualizes meaningful microorganisms for a particular disease.
     """
 
     # Adım 1: Verileri hazırlama (Log dönüşümü ve Winsorize)
@@ -64,22 +64,22 @@ def analyze_microbiome_disease(X_num, y_dis, disease, control_label="healthy", t
         return None
 
 # Streamlit Uygulama
-st.set_page_config(page_title="Mikrobiyom Hastalık Analizi", page_icon=":microscope:", layout="wide")
+st.set_page_config(page_title="Microbiome Disease Analysis", page_icon=":microscope:", layout="wide")
 st.title("Microbiome Disease Analysis")
-st.subheader("Hastalıkların biyobelirteç analizi")
-st.markdown("Hasta örneklerinden elde edilen mikroorganizmaların analizini yapın ve hastalık ile sağlıklı grup arasındaki farkları inceleyin. Bu uygulama, mikroorganizmaların hastalıklarla ilişkisini anlamanıza yardımcı olacak ve hastalıkların biyobelirteçlerini analiz edebileceksiniz.")
+st.subheader("Analysis of biomarker of disease")
+st.markdown("Analyze microorganisms obtained from patient samples and examine the differences between the disease and healthy group. This application will help you understand the relationship between microorganisms and diseases and you will be able to analyze the biomarkers of diseases.")
 
 # Verileri Yükleme
-st.sidebar.header("Verilerinizi Yükleyin")
-uploaded_file = st.sidebar.file_uploader("Hastalıklar içeren bir CSV dosyası yükleyin", type=["csv"])
+st.sidebar.header("Upload your data")
+uploaded_file = st.sidebar.file_uploader("Upload csv data with disease", type=["csv"])
 
 if uploaded_file is not None:
     df = pd.read_csv(uploaded_file)
     
     # Kullanıcıdan hastalık ve kontrol grup seçimi
-    disease = st.sidebar.selectbox("Hangi hastalığı analiz etmek istersiniz?", df['disease'].unique())
+    disease = st.sidebar.selectbox("Which disease would you like to analyze?", df['disease'].unique())
     control_label = "healthy"  # Sağlıklı grup sabit
-    top_n = st.sidebar.slider("En önemli mikroorganizmaların sayısı", 1, 10, 5)
+    top_n = st.sidebar.slider("The number of most important disease", 1, 10, 5)
 
     # Verileri X_num ve y_dis olarak ayırma
     X_num = df.drop(columns=['disease'])
@@ -90,5 +90,5 @@ if uploaded_file is not None:
     
     # Anlamlı mikroorganizmaları listele
     if top_microbes_df is not None:
-        st.write("En anlamlı mikroorganizmalar:")
+        st.write("The most meaningful microorganisms:")
         st.dataframe(top_microbes_df)
