@@ -69,7 +69,7 @@ if uploaded_file is not None:
         else:
             # Features compatible with the data on which the model was trained
             try:
-                train_df = pd.read_csv("/Users/beyzacanakci/Desktop/miuul/proje/final_df.csv")
+                train_df = pd.read_csv(uploaded_file)
                 X_train = train_df.drop(columns=["disease"])
                 features = X_train.columns
             except Exception as e:
