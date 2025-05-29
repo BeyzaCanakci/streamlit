@@ -3,5 +3,8 @@ pandas
 numpy
 scikit-learn
 matplotlib
+matplotlib.pyplot
 seaborn
 joblib
+scipy
+statsmodels
