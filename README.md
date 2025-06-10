@@ -67,16 +67,6 @@ This Streamlit app page (`2🧬Microbial_Analysis.py`) provides an interactive i
 
 - Python libraries: `pandas`, `numpy`, `seaborn`, `matplotlib`, `streamlit`, `scipy`, `statsmodels`
 
-### Usage
-
-Run this page as part of your Streamlit application:
-```bash
-streamlit run pages/2🧬Microbial_Analysis.py
-```
-
----
-Here’s a sample README file in English for the file 3💻Disease_Prediction_with_Model.py in your repository. You can copy and adapt this as README.md, or place it in the /pages directory if you prefer a per-page README.
-
 ---
 
 # Disease Prediction with Model
