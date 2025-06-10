@@ -25,7 +25,7 @@ Here is an example of a README (in English) for the file 2🧬Microbial_Analysis
 
 ---
 
-## Microbial Analysis Projects
+# Microbial Analysis Projects
 
 This Streamlit app page (`2🧬Microbial_Analysis.py`) provides an interactive interface to analyze and visualize significant differences in microbial abundance between disease and healthy groups using user-uploaded data.
 
@@ -75,6 +75,47 @@ streamlit run pages/2🧬Microbial_Analysis.py
 ```
 
 ---
+Here’s a sample README file in English for the file 3💻Disease_Prediction_with_Model.py in your repository. You can copy and adapt this as README.md, or place it in the /pages directory if you prefer a per-page README.
+
+---
+
+# Disease Prediction with Model
+
+This script, `3💻Disease_Prediction_with_Model.py`, is part of a Streamlit application for predicting diseases using a machine learning model. The app provides a user-friendly interface for entering symptoms and outputs the probable disease based on the trained model.
+
+## Features
+
+- User input interface for symptoms.
+- Machine learning-based disease prediction.
+- Clean and interactive Streamlit UI.
+- Easy to use for both technical and non-technical users.
+
+## Usage
+
+1. **Requirements**  
+   Make sure you have installed the required Python libraries:
+   - streamlit
+   - pandas
+   - scikit-learn
+   - numpy
+
+
+3. **How it works**  
+   - The user enters symptoms into the web app.
+   - The model processes the input and predicts the most likely disease.
+   - The result is displayed instantly within the Streamlit app.
+
+## File Location
+
+- `pages/3💻Disease_Prediction_with_Model.py`
+
+## Customization
+
+- You can update the model or symptoms list by editing the script.
+- For more advanced features, integrate additional models or data sources as needed.
+
+
+---
 
 
 ## Folder Structure
@@ -84,8 +125,8 @@ streamlit/
 ├── streamlit_app.py         # Main entry point for the Streamlit app
 ├── pages/
 │   ├── 1📊Exploratory_Data_Analysis.py
-│   ├── 2Microbial_Analysis.py
-│   └── 3Disease_Prediction_with_Model.py
+│   ├── 2🧬Microbial_Analysis.py
+│   └── 3💻Disease_Prediction_with_Model.py
 ├── README.md
 └── ...
 ```
