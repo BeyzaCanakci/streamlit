@@ -21,6 +21,61 @@ This repository contains interactive data analysis projects built with Streamlit
 - Visualizations with Python libraries (e.g., Matplotlib, Seaborn, Plotly)  
 - User-friendly interface for exploring and understanding data  
 - Modular project structure: each analysis as a separate script under pages/
+Here is an example of a README (in English) for the file 2🧬Microbial_Analysis.py in your repo:
+
+---
+
+## Microbial Analysis Projects
+
+This Streamlit app page (`2🧬Microbial_Analysis.py`) provides an interactive interface to analyze and visualize significant differences in microbial abundance between disease and healthy groups using user-uploaded data.
+
+### Features
+
+- **Data Upload:** Users can upload their own CSV files containing microbial abundance data with a `disease` column.
+- **Statistical Analysis:** The script applies statistical tests (t-test or Mann-Whitney U test, depending on group sizes) to identify microbes significantly associated with a selected disease.
+- **Multiple Testing Correction:** Bonferroni correction is applied to control for false positives.
+- **Visualization:** The most significant microbes are visualized via boxplots to compare distributions between disease and healthy groups.
+- **Customizable:** Users can select the disease group to analyze and the number of top significant microbes to display.
+
+### How to Use
+
+1. **Upload Data:**
+   - The data file should be in CSV format and contain a column named `disease` indicating group labels (e.g., "healthy", "disease1", "disease2", etc.).
+   - All other columns should represent the abundance of different microbes.
+
+2. **Configure Analysis:**
+   - Select which disease group to compare against the "healthy" control.
+   - Choose how many of the top significant microbes you want to visualize.
+
+3. **Interpret Results:**
+   - The app will display a boxplot of the top significant microbes and a table listing them with their adjusted p-values.
+
+### Example Data Format
+
+| microbe1 | microbe2 | ... | disease  |
+|----------|----------|-----|----------|
+| 0.1      | 2.3      | ... | healthy  |
+| 0.5      | 1.8      | ... | disease1 |
+| ...      | ...      | ... | ...      |
+
+### Main Functionality
+
+- **analyze_microbiome_disease:** Core function for statistical testing and visualization.
+- **Streamlit Interface:** Provides user controls for data upload, group selection, and result display.
+
+### Requirements
+
+- Python libraries: `pandas`, `numpy`, `seaborn`, `matplotlib`, `streamlit`, `scipy`, `statsmodels`
+
+### Usage
+
+Run this page as part of your Streamlit application:
+```bash
+streamlit run pages/2🧬Microbial_Analysis.py
+```
+
+---
+
 
 ## Folder Structure
 
