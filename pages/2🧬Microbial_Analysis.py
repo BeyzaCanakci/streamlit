@@ -12,12 +12,12 @@ def analyze_microbiome_disease(X_num, y_dis, disease, control_label="healthy", t
     It analyzes and visualizes meaningful microorganisms for a particular disease.
     """
 
-    # Adım 1: Verileri hazırlama (Log dönüşümü ve Winsorize)
+    # 1: Preparing data (Log transformation and Winsorize)
     X_num_log = np.log1p(X_num)
     X_num_winsorized = X_num_log.apply(lambda col: mstats.winsorize(col, limits=[0.01, 0.01]))
     X_num_winsorized['disease'] = y_dis  
 
-    # Adım 2: İstatistiksel testler
+    # 2: statistical tests t
     disease_results = []
     for microbe in X_num_winsorized.columns:
         if microbe != "disease":
@@ -31,17 +31,17 @@ def analyze_microbiome_disease(X_num, y_dis, disease, control_label="healthy", t
 
             disease_results.append([microbe, p_value])
 
-    # Adım 3: Çoklu karşılaştırma düzeltmesi
+    # 3: p-adjusted
     disease_results_df = pd.DataFrame(disease_results, columns=["Microbe", "p_value"])
     disease_results_df["adjusted_p"] = multipletests(disease_results_df["p_value"], method="bonferroni")[1]
 
-    # Adım 4: Anlamlı mikroorganizmaları bul
+    # 4: finding significant microorganism
     significant_microbes = disease_results_df[disease_results_df["adjusted_p"] < 0.05]
 
-    # Adım 5: En önemli mikroorganizmaları seç
+    #  5: select the tops
     top_microbes = significant_microbes.sort_values(by="adjusted_p").head(top_n)
 
-    # Adım 6: Görselleştirme
+    #  6: Visualization
     if not top_microbes.empty:
         top_microbe_names = top_microbes["Microbe"].tolist()
         top_microbe_data = X_num_winsorized[top_microbe_names + ["disease"]]
@@ -63,32 +63,32 @@ def analyze_microbiome_disease(X_num, y_dis, disease, control_label="healthy", t
         st.error(f"No significant microbes found for {disease} vs {control_label}")
         return None
 
-# Streamlit Uygulama
+# Streamlit 
 st.set_page_config(page_title="Microbiome Disease Analysis", page_icon=":microscope:", layout="wide")
 st.title("Microbiome Disease Analysis")
 st.subheader("Analysis of biomarker of disease")
 st.markdown("Analyze microorganisms obtained from patient samples and examine the differences between the disease and healthy group. This application will help you understand the relationship between microorganisms and diseases and you will be able to analyze the biomarkers of diseases.")
 
-# Verileri Yükleme
+# loading data 
 st.sidebar.header("Upload your data")
 uploaded_file = st.sidebar.file_uploader("Upload csv data with disease", type=["csv"])
 
 if uploaded_file is not None:
     df = pd.read_csv(uploaded_file)
     
-    # Kullanıcıdan hastalık ve kontrol grup seçimi
+    # select the disease and control from users 
     disease = st.sidebar.selectbox("Which disease would you like to analyze?", df['disease'].unique())
-    control_label = "healthy"  # Sağlıklı grup sabit
+    control_label = "healthy"  # healthy group
     top_n = st.sidebar.slider("The number of most important disease", 1, 10, 5)
 
-    # Verileri X_num ve y_dis olarak ayırma
+    # seperate disease like X_num and y_dis 
     X_num = df.drop(columns=['disease'])
     y_dis = df['disease']
     
-    # Hastalık için analiz yapma
+    # Analyze the disease 
     top_microbes_df = analyze_microbiome_disease(X_num, y_dis, disease, control_label, top_n)
     
-    # Anlamlı mikroorganizmaları listele
+    # list the top microorganism
     if top_microbes_df is not None:
         st.write("The most meaningful microorganisms:")
         st.dataframe(top_microbes_df)
