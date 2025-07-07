@@ -155,9 +155,5 @@ streamlit/
 - Use the provided widgets to filter and explore the data.
 - Visualize various aspects of the data using plots and tables.
 
-## License
 
-This project is licensed under the MIT License.
-
----
 
