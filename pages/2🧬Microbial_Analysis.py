@@ -69,7 +69,7 @@ st.title("Microbiome Disease Analysis")
 st.subheader("Analysis of biomarker of disease")
 st.markdown("Analyze microorganisms obtained from patient samples and examine the differences between the disease and healthy group. This application will help you understand the relationship between microorganisms and diseases and you will be able to analyze the biomarkers of diseases.")
 
-# loading data 
+# uploading data 
 st.sidebar.header("Upload your data")
 uploaded_file = st.sidebar.file_uploader("Upload csv data with disease", type=["csv"])
 
