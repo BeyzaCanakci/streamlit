@@ -21,31 +21,31 @@ This application aims to predict possible diseases by focusing on the intestinal
 It analyzes the relationships between microbial diversity and diseases based on the abundance levels of microorganisms in people's samples and makes predictions accordingly.
 """)
 
-# Cache'li model yükleme
+# Upload model with Cache
 @st.cache_resource
 def load_model():
     return joblib.load("model/RF-Metagenomic-data-analysis.pkl")
 
 model = load_model()
 
-# Dosya yükleme
+# Upload files 
 uploaded_file = st.file_uploader("Upload data without label", type=["csv"])
 if uploaded_file is not None:
     df = pd.read_csv(uploaded_file)
 
     if 'Disease' in df.columns:
-        df = df.drop(columns=['Disease'])  # Etiket varsa çıkar
+        df = df.drop(columns=['Disease'])  # remove the label
 
     st.write("Uploaded data:")
     st.write(df.head())
 
-    # Model ile tahmin
+    # Prediction with model
     if st.button("Predict with model"):
         prediction = model.predict(df)
         st.write("🔍 Prediction results:")
         st.write(prediction)
 
-        # Label karşılıklarını göster
+        # Label and their mean
         label_map = {
             0: "Colorectal Cancer",
             1: "Cirrhosis",
